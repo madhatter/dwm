@@ -16,9 +16,13 @@ install=dwm.install
 source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 	config.h
 	dwm.desktop)
-md5sums=('8bb00d4142259beb11e13473b81c0857'
-         '2453e037f46449774ec8afab49b4f1a2'
-         '939f403a71b6e85261d09fc3412269ee')
+_patches=(01-dwm-$pkgver-statuscolors.diff
+          02-dwm-$pkgver-scratchpad-stay.diff
+          03-dwm-$pkgver-single_window_no_border.diff
+          04-dwm-$pkgver-centred-floating.diff
+          05-dwm-$pkgver-save_floats.diff
+          06-dwm-$pkgver-no_title.diff)
+source=(${source[@]} ${_patches[@]})
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -39,8 +43,11 @@ package() {
   install -m644 -D $srcdir/dwm.desktop $pkgdir/usr/share/xsessions/dwm.desktop
 }
 md5sums=('8bb00d4142259beb11e13473b81c0857'
-         '6c07c4d8c76bc2118e8ce203df524344'
-         '939f403a71b6e85261d09fc3412269ee')
-md5sums=('8bb00d4142259beb11e13473b81c0857'
-         '858f4d423c4889f0ea75940ae6e887ac'
-         '939f403a71b6e85261d09fc3412269ee')
+         '7be3349ed1f1f3a9937ee62adbe69c6f'
+         '939f403a71b6e85261d09fc3412269ee'
+         '519d395d59b7aee06b0e318e81b25929'
+         '7a2ef8deb2331f16c70d94bb51dc03db'
+         '8a3e75b78e71dda22935c3e497b5bee3'
+         '7aef89991a42e4e65c880a6e60024ed7'
+         'ad4d21ab24896099a434e3b45ddb6f00'
+         '195758bdc3e1378167067b818657ee62')
