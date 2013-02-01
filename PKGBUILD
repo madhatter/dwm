@@ -14,8 +14,11 @@ options=(zipman)
 depends=('libx11' 'libxinerama')
 install=dwm.install
 source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
-	config.h
-	dwm.desktop)
+		config.h
+		push.c
+		runorraise.c
+		bstack.c
+		dwm.desktop)
 _patches=(01-dwm-$pkgver-statuscolors.diff
           02-dwm-$pkgver-scratchpad-stay.diff
           03-dwm-$pkgver-single_window_no_border.diff
@@ -26,7 +29,16 @@ source=(${source[@]} ${_patches[@]})
 
 build() {
   cd $srcdir/$pkgname-$pkgver
+
+  for p in "${_patches[@]}"; do
+  	msg "$p"
+    patch < ../$p || return 1
+  done
+
   cp $srcdir/config.h config.h
+  cp $srcdir/push.c push.c
+  cp $srcdir/runorraise.c runorraise.c
+  cp $srcdir/bstack.c bstack.c
   sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
   sed -i 's/^CFLAGS = -g/#CFLAGS += -g/g' config.mk
   sed -i 's/^#CFLAGS = -std/CFLAGS += -std/g' config.mk

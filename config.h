@@ -1,37 +1,65 @@
 /* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h>
+#include <bstack.c>
+#include <push.c>
+#include <runorraise.c>
 
 /* appearance */
-static const char font[]            = "-*-terminus-medium-r-*-*-8-*-*-*-*-*-*-*";
-static const char normbordercolor[] = "#444444";
-static const char normbgcolor[]     = "#222222";
-static const char normfgcolor[]     = "#bbbbbb";
-static const char selbordercolor[]  = "#005577";
-static const char selbgcolor[]      = "#005577";
-static const char selfgcolor[]      = "#eeeeee";
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
-static const Bool showbar           = True;     /* False means no bar */
-static const Bool topbar            = True;     /* False means bottom bar */
+static const char font[] = "-*-tamsyn-medium-*-*-*-14-*-*-*-*-*-*-*";
+
+#define NUMCOLORS 20
+static const char colors[NUMCOLORS][ColLast][20] = {
+    /* border     fg         bg */
+    { "#242323", "#94928F", "#140C0B" },            /* 01 - normal */
+    { "#666362", "#CDCDCD", "#140C0B" },            /* 02 - selected */
+    { "#91444D", "#91444D", "#140C0B" },            /* 03 - urgent */
+
+    { "#0A1724", "#0A1724", "#140C0B" },            /* 04 - black */
+    { "#701726", "#701726", "#140C0B" },            /* 05 - red */
+    { "#286332", "#286332", "#140C0B" },            /* 06 - green */
+    { "#706A2D", "#706A2D", "#140C0B" },            /* 07 - yellow */
+    { "#00508A", "#00508A", "#140C0B" },            /* 08 - blue */
+    { "#454E7D", "#454E7D", "#140C0B" },            /* 09 - magenta */
+    { "#000000", "#000000", "#140C0B" },            /* unusable */
+    { "#007070", "#007070", "#140C0B" },            /* 0B - cyan */
+    { "#5E687D", "#5E687D", "#140C0B" },            /* 0C - light gray */
+    { "#303B4A", "#303B4A", "#140C0B" },            /* 0D - gray */
+    { "#A33144", "#A33144", "#140C0B" },            /* 0E - light red */
+    { "#449652", "#449652", "#140C0B" },            /* 0F - light green */
+    { "#A38262", "#A38262", "#140C0B" },            /* 10 - light yellow */
+    { "#357CB0", "#357CB0", "#140C0B" },            /* 11 - light blue */
+    { "#963576", "#963576", "#140C0B" },            /* 12 - light magenta */
+    { "#2C9696", "#2C9696", "#140C0B" },            /* 13 - light cyan */
+    { "#878F96", "#878F96", "#140C0B" },            /* 14 - white */
+};
+
+static const unsigned int borderpx = 1;             /* border pixel of windows */
+static const unsigned int snap     = 8;             /* snap pixel */
+static const Bool showbar          = True;          /* False means no bar */
+static const Bool topbar           = True;          /* False means bottom bar */
+static const char scratchpadname[] = "Scratchpad";  /* scratchpad window title */
+
+/* layout(s) */
+static const float mfact           = 0.50;          /* factor of master area size [0.05..0.95] */
+static const int nmaster           = 1;             /* number of clients in master area */
+static const Bool resizehints      = False;         /* True means respect size hints in tiled resizals */
+
+static const Layout layouts[] = {
+	/* symbol     arrange function */
+	{ "[|]",      tile },
+	{ "[-]",      bstack },
+	{ "[ ]",      monocle },                         /* first entry is default */
+	{ "><>",      NULL },                            /* no layout function means floating behavior */
+};
 
 /* tagging */
 static const char *tags[] = { "term", "code", "mail", "www", "irc", "sfx", "gfx", "vm" };
 
 static const Rule rules[] = {
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       1 << 6,            True,        -1 }, // appears on tag 7
-	{ "Firefox",  NULL,       NULL,       1 << 3,       False,       -1 }, // appears on tag 4
-};
-
-/* layout(s) */
-static const float mfact      = 0.55; /* factor of master area size [0.05..0.95] */
-static const int nmaster      = 1;    /* number of clients in master area */
-static const Bool resizehints = False; /* True means respect size hints in tiled resizals */
-
-static const Layout layouts[] = {
-	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+    /* class      instance     title        tags mask  isfloating  iscentred   monitor */
+   	{ "Gimp",     NULL,       NULL,       1 << 6,      True,        -1 }, // appears on tag 7
+	{ "Firefox",  NULL,       NULL,       1 << 3,      False,       -1 }, // appears on tag 4
+	{ "mplayer2", NULL,        NULL,        0,         True,        -1 },
 };
 
 /* key definitions */
@@ -42,13 +70,25 @@ static const Layout layouts[] = {
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
+
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-i", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *dmenucmd[]      = { "dmenu_run", "-i", "-fn", font, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG],
+                                    "-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
+//static const char *dmenucmd[] = { "dmenu_run", "-i", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
 static const char *lockcmd[]  = { "slimlock", NULL };
+
+
+static const char *voldown[]    = { "amixer", "-q", "set", "Master", "2dB-",  NULL };
+static const char *voltoggle[]  = { "amixer", "-q", "set", "Master", "toggle",  NULL };
+static const char *volup[]      = { "amixer", "-q", "set", "Master", "2dB+",  NULL };
+
+static const char *next[]       = { "mpc", "next", NULL };
+static const char *play[]       = { "mpc", "toggle", NULL };
+static const char *prev[]       = { "mpc", "prev", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
