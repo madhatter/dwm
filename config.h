@@ -57,9 +57,10 @@ static const char *tags[] = { "term", "code", "mail", "www", "irc", "sfx", "gfx"
 
 static const Rule rules[] = {
     /* class      instance     title        tags mask  isfloating  iscentred   monitor */
-   	{ "Gimp",     NULL,       NULL,       1 << 6,      True,        -1 }, // appears on tag 7
-	{ "Firefox",  NULL,       NULL,       1 << 3,      False,       -1 }, // appears on tag 4
-	{ "mplayer2", NULL,        NULL,        0,         True,        -1 },
+   	{ "Gimp",     NULL,       NULL,         1 << 6,    True,        -1 }, // appears on tag 7
+	{ "Firefox",  NULL,       NULL,         1 << 3,    False,       -1 }, // appears on tag 4
+	{ "ncmpcpp",  NULL,       NULL,         1 << 5,    True,        -1 },
+	{ "mplayer2", NULL,       NULL,         0,         True,        -1 },
 };
 
 /* key definitions */
@@ -106,8 +107,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
