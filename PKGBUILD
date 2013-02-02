@@ -23,8 +23,7 @@ _patches=(01-dwm-$pkgver-statuscolors.diff
           02-dwm-$pkgver-scratchpad-stay.diff
           03-dwm-$pkgver-single_window_no_border.diff
           04-dwm-$pkgver-centred-floating.diff
-          05-dwm-$pkgver-save_floats.diff
-          06-dwm-$pkgver-no_title.diff)
+          05-dwm-$pkgver-save_floats.diff)
 source=(${source[@]} ${_patches[@]})
 
 build() {
