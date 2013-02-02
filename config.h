@@ -11,7 +11,7 @@ static const char font[] = "-*-tamsyn-medium-*-*-*-14-*-*-*-*-*-*-*";
 static const char colors[NUMCOLORS][ColLast][20] = {
     /* border     fg         bg */
     { "#242323", "#94928F", "#000000" },            /* 01 - normal */
-    { "#666362", "#CDCDCD", "#000000" },            /* 02 - selected */
+    { "#666362", "#CDCDCD", "#17597b" },            /* 02 - selected */
     { "#91444D", "#91444D", "#000000" },            /* 03 - urgent */
 
     { "#0A1724", "#0A1724", "#000000" },            /* 04 - black */
