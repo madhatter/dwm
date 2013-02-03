@@ -59,7 +59,7 @@ static const Rule rules[] = {
     /* class      instance     title        tags mask  isfloating  iscentred   monitor */
    	{ "Gimp",     NULL,       NULL,         1 << 6,    True,        -1 }, // appears on tag 7
 	{ "Firefox",  NULL,       NULL,         1 << 3,    False,       -1 }, // appears on tag 4
-	{ "ncmpcpp",  NULL,       NULL,         1 << 5,    True,        -1 },
+	{ "URxvt",    NULL,       "ncmpcpp",    1 << 5,    True,        -1 },
 	{ "mplayer2", NULL,       NULL,         0,         True,        -1 },
 };
 
@@ -79,9 +79,9 @@ static const Rule rules[] = {
 static const char *dmenucmd[]      = { "dmenu_run", "-i", "-fn", font, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG],
                                     "-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
 //static const char *dmenucmd[] = { "dmenu_run", "-i", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "urxvt", NULL };
-static const char *lockcmd[]  = { "slimlock", NULL };
-
+static const char *termcmd[]	= { "urxvt", NULL };
+static const char *lockcmd[]	= { "slimlock", NULL };
+static const char *ncmpcppcmd[] = { "urxvt", "-title", "ncmpcpp", "-e", "ncmpcpp", NULL };
 
 static const char *voldown[]    = { "amixer", "-q", "set", "Master", "2dB-",  NULL };
 static const char *voltoggle[]  = { "amixer", "-q", "set", "Master", "toggle",  NULL };
@@ -96,6 +96,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_a,      spawn,          {.v = lockcmd } },		
+	{ MODKEY,                       XK_n,      spawn,          {.v = ncmpcppcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
