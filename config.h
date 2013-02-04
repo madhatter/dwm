@@ -1,8 +1,7 @@
 /* See LICENSE file for copyright and license details. */
-#include <X11/XF86keysym.h>
-#include <bstack.c>
-#include <push.c>
-#include <runorraise.c>
+#include "X11/XF86keysym.h"
+#include "push.c"
+#include "runorraise.c"
 
 /* appearance */
 static const char font[] = "-*-tamsyn-medium-*-*-*-14-*-*-*-*-*-*-*";
@@ -53,7 +52,17 @@ static const Layout layouts[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "term", "code", "mail", "www", "irc", "sfx", "gfx", "vm" };
+static const Tag tags[] = {
+    /* name       layout           mfact    nmaster */
+    { "term",     &layouts[0],     -1,      -1 },
+    { "code",     &layouts[0],     -1,      -1 },
+    { "mail",     &layouts[0],     -1,      -1 },
+    { "www",      &layouts[0],     -1,      -1 },
+    { "irc",      &layouts[0],     -1,      -1 },
+    { "sfx",      &layouts[3],     -1,      -1 },
+    { "gfx",      &layouts[3],     -1,      -1 },
+    { "vm",       &layouts[2],     -1,      -1 },
+};
 
 static const Rule rules[] = {
     /* class      instance     title        tags mask  isfloating  iscentred   monitor */
