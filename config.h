@@ -4,7 +4,7 @@
 #include "runorraise.c"
 
 /* appearance */
-static const char font[] = "-*-tamsyn-medium-*-*-*-14-*-*-*-*-*-*-*";
+static const char font[] = "-*-terminus-medium-*-*-*-14-*-*-*-*-*-utf8-*";
 
 #define NUMCOLORS 20
 static const char colors[NUMCOLORS][ColLast][20] = {
@@ -106,6 +106,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_a,      spawn,          {.v = lockcmd } },		
 	{ MODKEY,                       XK_n,      spawn,          {.v = ncmpcppcmd } },
+	{ MODKEY|ShiftMask,				XK_Up,     spawn,		   {.v = volup } },
+	{ MODKEY|ShiftMask,				XK_Down,   spawn,		   {.v = voldown } },
+	{ MODKEY|ShiftMask,				XK_Left,   spawn,		   {.v = prev } },
+	{ MODKEY|ShiftMask,				XK_Right,  spawn,		   {.v = next } },
+	{ MODKEY|ShiftMask,				XK_p,	   spawn,		   {.v = play } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
