@@ -4,7 +4,8 @@
 #include "runorraise.c"
 
 /* appearance */
-static const char font[] = "-*-terminus-medium-*-*-*-14-*-*-*-*-*-utf8-*";
+//static const char font[] = "-*-terminus-medium-*-*-*-14-*-*-*-*-*-utf8-*";
+static const char font[] = "-*-*-medium-*-*-*-12-*-*-*-*-*-*-*";
 
 #define NUMCOLORS 20
 static const char colors[NUMCOLORS][ColLast][20] = {
