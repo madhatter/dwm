@@ -1,7 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 #include "X11/XF86keysym.h"
 #include "push.c"
-#include "runorraise.c"
 
 /* appearance */
 static const char font[] = "-*-terminus-medium-*-*-*-12-*-*-*-*-*-utf8-*";
@@ -90,7 +89,7 @@ static const Rule rules[] = {
 /* commands */
 static const char *dmenucmd[]      = { "dmenu_run", "-i", "-fn", font, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG],
                                     "-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
-//static const char *dmenucmd[] = { "dmenu_run", "-i", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *scratchpadcmd[] = { "urxvtc", "-title", scratchpadname, "-geometry", "70x9+400+10", NULL };
 static const char *termcmd[]	= { "urxvt", NULL };
 static const char *lockcmd[]	= { "slimlock", NULL };
 static const char *ncmpcppcmd[] = { "urxvt", "-title", "ncmpcpp", "-e", "ncmpcpp", NULL };
@@ -136,6 +135,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_s,	   togglescratch,  {.v = scratchpadcmd} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

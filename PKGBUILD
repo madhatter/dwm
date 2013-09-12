@@ -16,7 +16,6 @@ install=dwm.install
 source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 		config.h
 		push.c
-		runorraise.c
 		dwm.desktop)
 _patches=(01-dwm-$pkgver-statuscolors.diff
           02-dwm-$pkgver-pertag2.diff
