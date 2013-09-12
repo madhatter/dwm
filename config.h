@@ -110,6 +110,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_n,      spawn,          {.v = ncmpcppcmd } },
 	{ MODKEY|ShiftMask,				XK_Up,     spawn,		   {.v = volup } },
 	{ MODKEY|ShiftMask,				XK_Down,   spawn,		   {.v = voldown } },
+	{ MODKEY|ShiftMask,				XK_m,	   spawn,		   {.v = voltoggle } },
 	{ MODKEY|ShiftMask,				XK_Left,   spawn,		   {.v = prev } },
 	{ MODKEY|ShiftMask,				XK_Right,  spawn,		   {.v = next } },
 	{ MODKEY|ShiftMask,				XK_p,	   spawn,		   {.v = play } },
