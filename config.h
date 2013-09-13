@@ -8,28 +8,28 @@ static const char font[] = "-*-terminus-medium-*-*-*-12-*-*-*-*-*-utf8-*";
 
 #define NUMCOLORS 20
 static const char colors[NUMCOLORS][ColLast][20] = {
-    /* border     fg         bg */
-    { "#242323", "#94928F", "#000000" },            /* 01 - normal */
-    { "#666362", "#CDCDCD", "#17597b" },            /* 02 - selected */
-    { "#91444D", "#91444D", "#000000" },            /* 03 - urgent */
+	/* border     fg         bg */
+	{ "#242323", "#94928F", "#000000" },            /* 01 - normal */
+	{ "#666362", "#CDCDCD", "#17597b" },            /* 02 - selected */
+	{ "#91444D", "#91444D", "#000000" },            /* 03 - urgent */
 
-    { "#0A1724", "#0A1724", "#000000" },            /* 04 - black */
-    { "#701726", "#701726", "#000000" },            /* 05 - red */
-    { "#286332", "#286332", "#000000" },            /* 06 - green */
-    { "#706A2D", "#706A2D", "#000000" },            /* 07 - yellow */
-    { "#00508A", "#00508A", "#000000" },            /* 08 - blue */
-    { "#454E7D", "#454E7D", "#000000" },            /* 09 - magenta */
-    { "#000000", "#000000", "#000000" },            /* unusable */
-    { "#007070", "#007070", "#000000" },            /* 0B - cyan */
-    { "#5E687D", "#5E687D", "#000000" },            /* 0C - light gray */
-    { "#303B4A", "#303B4A", "#000000" },            /* 0D - gray */
-    { "#A33144", "#A33144", "#000000" },            /* 0E - light red */
-    { "#449652", "#449652", "#000000" },            /* 0F - light green */
-    { "#A38262", "#A38262", "#000000" },            /* 10 - light yellow */
-    { "#357CB0", "#357CB0", "#000000" },            /* 11 - light blue */
-    { "#963576", "#963576", "#000000" },            /* 12 - light magenta */
-    { "#2C9696", "#2C9696", "#000000" },            /* 13 - light cyan */
-    { "#878F96", "#878F96", "#000000" },            /* 14 - white */
+	{ "#0A1724", "#0A1724", "#000000" },            /* 04 - black */
+	{ "#701726", "#701726", "#000000" },            /* 05 - red */
+	{ "#286332", "#286332", "#000000" },            /* 06 - green */
+	{ "#706A2D", "#706A2D", "#000000" },            /* 07 - yellow */
+	{ "#00508A", "#00508A", "#000000" },            /* 08 - blue */
+	{ "#454E7D", "#454E7D", "#000000" },            /* 09 - magenta */
+	{ "#000000", "#000000", "#000000" },            /* unusable */
+	{ "#007070", "#007070", "#000000" },            /* 0B - cyan */
+	{ "#5E687D", "#5E687D", "#000000" },            /* 0C - light gray */
+	{ "#303B4A", "#303B4A", "#000000" },            /* 0D - gray */
+	{ "#A33144", "#A33144", "#000000" },            /* 0E - light red */
+	{ "#449652", "#449652", "#000000" },            /* 0F - light green */
+	{ "#A38262", "#A38262", "#000000" },            /* 10 - light yellow */
+	{ "#357CB0", "#357CB0", "#000000" },            /* 11 - light blue */
+	{ "#963576", "#963576", "#000000" },            /* 12 - light magenta */
+	{ "#2C9696", "#2C9696", "#000000" },            /* 13 - light cyan */
+	{ "#878F96", "#878F96", "#000000" },            /* 14 - white */
 };
 
 static const unsigned int systrayspacing = 2;		/* systray spacing */
@@ -55,20 +55,20 @@ static const Layout layouts[] = {
 
 /* tagging */
 static const Tag tags[] = {
-    /* name       layout           mfact    nmaster */
-    { "term",     &layouts[0],     -1,      -1 },
-    { "code",     &layouts[0],     -1,      -1 },
-    { "mail",     &layouts[0],     -1,      -1 },
-    { "www",      &layouts[0],     -1,      -1 },
-    { "irc",      &layouts[0],     -1,      -1 },
-    { "sfx",      &layouts[3],     -1,      -1 },
-    { "gfx",      &layouts[3],     -1,      -1 },
-    { "vm",       &layouts[2],     -1,      -1 },
+	/* name       layout           mfact    nmaster */
+	{ "term",     &layouts[0],     -1,      -1 },
+	{ "code",     &layouts[0],     -1,      -1 },
+	{ "mail",     &layouts[0],     -1,      -1 },
+	{ "www",      &layouts[0],     -1,      -1 },
+	{ "irc",      &layouts[0],     -1,      -1 },
+	{ "sfx",      &layouts[3],     -1,      -1 },
+	{ "gfx",      &layouts[3],     -1,      -1 },
+	{ "vm",       &layouts[2],     -1,      -1 },
 };
 
 static const Rule rules[] = {
-    /* class      instance     title        tags mask  isfloating  iscentred   monitor */
-   	{ "Gimp",     NULL,       NULL,         1 << 6,    True,        -1 }, // appears on tag 7
+	/* class      instance     title        tags mask  isfloating  iscentred   monitor */
+	{ "Gimp",     NULL,       NULL,         1 << 6,    True,        -1 }, // appears on tag 7
 	{ "Firefox",  NULL,       NULL,         1 << 3,    False,       -1 }, // appears on tag 4
 	{ "URxvt",    NULL,       "ncmpcpp",    1 << 5,    True,        -1 },
 	{ "mplayer2", NULL,       NULL,         0,         True,        -1 },
@@ -77,10 +77,10 @@ static const Rule rules[] = {
 /* key definitions */
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
@@ -88,7 +88,7 @@ static const Rule rules[] = {
 
 /* commands */
 static const char *dmenucmd[]      = { "dmenu_run", "-i", "-fn", font, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG],
-                                    "-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
+	"-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
 static const char *scratchpadcmd[] = { "urxvtc", "-title", scratchpadname, "-geometry", "70x9+400+10", NULL };
 static const char *termcmd[]	= { "urxvt", NULL };
 static const char *lockcmd[]	= { "slimlock", NULL };
@@ -140,15 +140,15 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_j,      pushdown,       {0} },
 	{ MODKEY|ControlMask,           XK_k,      pushup,         {0} },
 	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+		TAGKEYS(                        XK_2,                      1)
+		TAGKEYS(                        XK_3,                      2)
+		TAGKEYS(                        XK_4,                      3)
+		TAGKEYS(                        XK_5,                      4)
+		TAGKEYS(                        XK_6,                      5)
+		TAGKEYS(                        XK_7,                      6)
+		TAGKEYS(                        XK_8,                      7)
+		TAGKEYS(                        XK_9,                      8)
+		{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
 /* button definitions */
