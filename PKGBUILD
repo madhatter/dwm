@@ -5,7 +5,7 @@
 
 pkgname=dwm
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
@@ -24,6 +24,17 @@ _patches=(01-dwm-$pkgver-statuscolors.diff
           05-dwm-$pkgver-single_window_no_border.diff
           06-dwm-$pkgver-centred-floating.diff
           07-dwm-$pkgver-save_floats.diff)
+md5sums=(8bb00d4142259beb11e13473b81c0857
+		 459540fb7c093f19c921f6954e8982b1
+		 689534c579b1782440ddcaf71537d8fd
+		 939f403a71b6e85261d09fc3412269ee
+		 519d395d59b7aee06b0e318e81b25929
+		 5d2a023e8f649a2539887d1cabb70b31
+		 c08fe44446226ad8748f850989be629a
+		 b4b8ea44c43be3cc6cd31b0aa9ec5c11
+		 31ccb769758767e4fb692acbf49d6a80
+		 7aef89991a42e4e65c880a6e60024ed7
+		 ad4d21ab24896099a434e3b45ddb6f00)
 source=(${source[@]} ${_patches[@]})
 
 build() {
