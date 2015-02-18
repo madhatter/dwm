@@ -98,12 +98,17 @@ static const char *voldown[]    = { "amixer", "-q", "set", "Master", "2dB-",  NU
 static const char *voltoggle[]  = { "amixer", "-q", "set", "Master", "toggle",  NULL };
 static const char *volup[]      = { "amixer", "-q", "set", "Master", "2dB+",  NULL };
 
+static const char *brightup[]   = { "xbacklight", "-inc", "10", NULL};
+static const char *brightdown[] = { "xbacklight", "-dec", "10", NULL};
+
 static const char *next[]       = { "mpc", "next", NULL };
 static const char *play[]       = { "mpc", "toggle", NULL };
 static const char *prev[]       = { "mpc", "prev", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ 0,                            0x1008ff03,spawn,          {.v = brightdown} },
+	{ 0,                            0x1008ff02,spawn,          {.v = brightup} },
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_a,      spawn,          {.v = lockcmd } },		
