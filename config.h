@@ -69,7 +69,6 @@ static const Tag tags[] = {
 static const Rule rules[] = {
 	/* class      instance     title        tags mask  isfloating  iscentred   monitor */
 	{ "Gimp",     NULL,       NULL,         1 << 6,    True,        -1 }, // appears on tag 7
-	{ "Firefox",  NULL,       NULL,         1 << 3,    False,       -1 }, // appears on tag 4
 	{ "URxvt",    NULL,       "ncmpcpp",    1 << 5,    True,        -1 },
 	{ "mplayer2", NULL,       NULL,         0,         True,        -1 },
 };
