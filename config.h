@@ -71,6 +71,7 @@ static const Rule rules[] = {
 	{ "Gimp",     NULL,       NULL,         1 << 6,    True,        -1 }, // appears on tag 7
 	{ "URxvt",    NULL,       "ncmpcpp",    1 << 5,    True,        -1 },
 	{ "mplayer2", NULL,       NULL,         0,         True,        -1 },
+	{ "Spotify",  NULL,       NULL,         1 << 5,    True,        -1 }, // fixes rendering glitches
 };
 
 /* key definitions */
