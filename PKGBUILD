@@ -25,7 +25,7 @@ _patches=(01-dwm-$pkgver-statuscolors.diff
           06-dwm-$pkgver-centred-floating.diff
           07-dwm-$pkgver-save_floats.diff)
 md5sums=(8bb00d4142259beb11e13473b81c0857
-		 459540fb7c093f19c921f6954e8982b1
+		 4832e1990d515eb1af6ca92d5b116ba5
 		 689534c579b1782440ddcaf71537d8fd
 		 939f403a71b6e85261d09fc3412269ee
 		 519d395d59b7aee06b0e318e81b25929

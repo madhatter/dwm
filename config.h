@@ -95,9 +95,9 @@ static const char *termcmd[]	= { "urxvt", NULL };
 static const char *lockcmd[]	= { "slimlock", NULL };
 static const char *ncmpcppcmd[] = { "urxvt", "-title", "ncmpcpp", "-e", "ncmpcpp", NULL };
 
-static const char *voldown[]    = { "amixer", "-q", "set", "Master", "2dB-",  NULL };
+static const char *voldown[]    = { "amixer", "-q", "set", "Master", "2%-",  NULL };
 static const char *voltoggle[]  = { "amixer", "-q", "set", "Master", "toggle",  NULL };
-static const char *volup[]      = { "amixer", "-q", "set", "Master", "2dB+",  NULL };
+static const char *volup[]      = { "amixer", "-q", "set", "Master", "2%+",  NULL };
 
 static const char *brightup[]   = { "xbacklight", "-inc", "10", NULL};
 static const char *brightdown[] = { "xbacklight", "-dec", "10", NULL};
