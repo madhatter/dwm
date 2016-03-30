@@ -94,6 +94,7 @@ static const char *scratchpadcmd[] = { "urxvtc", "-title", scratchpadname, "-geo
 static const char *termcmd[]	= { "urxvt", NULL };
 static const char *lockcmd[]	= { "slimlock", NULL };
 static const char *ncmpcppcmd[] = { "urxvt", "-title", "ncmpcpp", "-e", "ncmpcpp", NULL };
+static const char *scrotactive[] = { "scrot", "-u", NULL };
 
 static const char *voldown[]    = { "amixer", "-q", "set", "Master", "2%-",  NULL };
 static const char *voltoggle[]  = { "amixer", "-q", "set", "Master", "toggle",  NULL };
@@ -146,6 +147,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,                       XK_s,	   togglescratch,  {.v = scratchpadcmd} },
+	{ MODKEY|ShiftMask,             XK_s,	   spawn,          {.v = scrotactive} },
 	{ MODKEY|ControlMask,           XK_j,      pushdown,       {0} },
 	{ MODKEY|ControlMask,           XK_k,      pushup,         {0} },
 	TAGKEYS(                        XK_1,                      0)
