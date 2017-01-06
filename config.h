@@ -3,7 +3,7 @@
 #include "push.c"
 
 /* appearance */
-static const char font[] = "-*-terminus-medium-*-*-*-12-*-*-*-*-*-utf8-*";
+static const char font[] = "-*-terminus-medium-*-*-*-14-*-*-*-*-*-utf8-*";
 //static const char font[] = "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*";
 
 #define NUMCOLORS 20
@@ -100,8 +100,8 @@ static const char *voldown[]    = { "amixer", "-q", "set", "Master", "2%-",  NUL
 static const char *voltoggle[]  = { "amixer", "-q", "set", "Master", "toggle",  NULL };
 static const char *volup[]      = { "amixer", "-q", "set", "Master", "2%+",  NULL };
 
-static const char *brightup[]   = { "xbacklight", "-inc", "10", NULL};
-static const char *brightdown[] = { "xbacklight", "-dec", "10", NULL};
+static const char *brightup[]   = { "light", "-A", "10", NULL};
+static const char *brightdown[] = { "light", "-U", "10", NULL};
 
 static const char *next[]       = { "mpc", "next", NULL };
 static const char *play[]       = { "mpc", "toggle", NULL };
