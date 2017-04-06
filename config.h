@@ -3,7 +3,7 @@
 #include "push.c"
 
 /* appearance */
-static const char font[] = "-*-terminus-medium-*-*-*-14-*-*-*-*-*-utf8-*";
+static const char font[] = "-*-terminus-medium-*-*-*-12-*-*-*-*-*-utf8-*";
 //static const char font[] = "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*";
 
 #define NUMCOLORS 20
@@ -70,7 +70,7 @@ static const Rule rules[] = {
 	/* class      instance     title        tags mask  isfloating  iscentred   monitor */
 	{ "Gimp",     NULL,       NULL,         1 << 6,    True,        -1 }, // appears on tag 7
 	{ "URxvt",    NULL,       "ncmpcpp",    1 << 5,    True,        -1 },
-	{ "mplayer2", NULL,       NULL,         0,         True,        -1 },
+	{ "keepassx", NULL,		  NULL,			1 << 7,    True,        -1 },
 	{ "Spotify",  NULL,       NULL,         1 << 5,    True,        -1 }, // fixes rendering glitches
 	{ "Steam",    NULL,       NULL,         1 << 6,    True,        -1 }, // fixes rendering glitches
 };
@@ -88,7 +88,7 @@ static const Rule rules[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[]      = { "dmenu_run", "-i", "-fn", font, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG],
+static const char *dmenucmd[]      = { "/home/awarnecke/bin/dmenu_bind.sh", "-i", "-fn", font, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG],
 	"-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
 static const char *scratchpadcmd[] = { "urxvtc", "-title", scratchpadname, "-geometry", "70x9+400+10", NULL };
 static const char *termcmd[]	= { "urxvt", NULL };
@@ -100,8 +100,8 @@ static const char *voldown[]    = { "amixer", "-q", "set", "Master", "2%-",  NUL
 static const char *voltoggle[]  = { "amixer", "-q", "set", "Master", "toggle",  NULL };
 static const char *volup[]      = { "amixer", "-q", "set", "Master", "2%+",  NULL };
 
-static const char *brightup[]   = { "light", "-A", "10", NULL};
-static const char *brightdown[] = { "light", "-U", "10", NULL};
+static const char *brightup[]   = { "light", "-A", "5", NULL};
+static const char *brightdown[] = { "light", "-U", "5", NULL};
 
 static const char *next[]       = { "mpc", "next", NULL };
 static const char *play[]       = { "mpc", "toggle", NULL };
