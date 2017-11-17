@@ -3,7 +3,8 @@
 #include "push.c"
 
 /* appearance */
-static const char font[] = "-*-terminus-medium-*-*-*-12-*-*-*-*-*-utf8-*";
+//static const char font[] = "-*-terminus-*-*-*-*-*-*-*-*-*-*-*-*";
+static const char font[] = ".";
 //static const char font[] = "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*";
 
 #define NUMCOLORS 20
@@ -88,8 +89,13 @@ static const Rule rules[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
+/*
+static const char *dmenucmd[]      = { "/usr/sbin/dmenu_run", "-z", "-fn", font, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG],
+	"-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
 static const char *dmenucmd[]      = { "/home/awarnecke/bin/dmenu_bind.sh", "-i", "-fn", font, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG],
 	"-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
+*/
+static const char *dmenucmd[]      = { "/home/awarnecke/bin/dmenu_bind.sh", NULL };
 static const char *scratchpadcmd[] = { "urxvtc", "-title", scratchpadname, "-geometry", "70x9+400+10", NULL };
 static const char *termcmd[]	= { "urxvt", NULL };
 static const char *lockcmd[]	= { "slimlock", NULL };
@@ -113,7 +119,7 @@ static Key keys[] = {
 	{ 0,                            0x1008ff02,spawn,          {.v = brightup} },
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_a,      spawn,          {.v = lockcmd } },		
+	{ MODKEY,                       XK_a,      spawn,          {.v = lockcmd } },
 	{ MODKEY,                       XK_n,      spawn,          {.v = ncmpcppcmd } },
 	{ MODKEY|ShiftMask,				XK_Up,     spawn,		   {.v = volup } },
 	{ 0,							0x1008ff13,spawn,		   {.v = volup } },
