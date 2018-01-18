@@ -113,6 +113,11 @@ static const char *next[]       = { "mpc", "next", NULL };
 static const char *play[]       = { "mpc", "toggle", NULL };
 static const char *prev[]       = { "mpc", "prev", NULL };
 
+static const char *snext[]		= { "spotify-cli", "--next", NULL };
+static const char *splay[]		= { "spotify-cli", "--playpause", NULL };
+static const char *sprev[]		= { "spotify-cli", "--prev", NULL };
+
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ 0,                            0x1008ff03,spawn,          {.v = brightdown} },
@@ -130,6 +135,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,				XK_Left,   spawn,		   {.v = prev } },
 	{ MODKEY|ShiftMask,				XK_Right,  spawn,		   {.v = next } },
 	{ MODKEY|ShiftMask,				XK_p,	   spawn,		   {.v = play } },
+	{ MODKEY|ControlMask,			XK_Left,   spawn,		   {.v = sprev } },
+	{ MODKEY|ControlMask,			XK_Right,  spawn,		   {.v = snext } },
+	{ MODKEY|ControlMask,			XK_p,	   spawn,		   {.v = splay } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

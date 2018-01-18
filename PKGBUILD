@@ -5,7 +5,7 @@
 
 pkgname=dwm
 pkgver=6.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ _patches=(01-dwm-$pkgver-statuscolors.diff
           06-dwm-$pkgver-centred-floating.diff
           07-dwm-$pkgver-save_floats.diff)
 md5sums=(8bb00d4142259beb11e13473b81c0857
-		 71d3ad2c7af6ff0e61e5adfecfad8363
+		 4daf95f7ad8cb03e1451babb0b6a2811
 		 689534c579b1782440ddcaf71537d8fd
 		 939f403a71b6e85261d09fc3412269ee
 		 519d395d59b7aee06b0e318e81b25929
