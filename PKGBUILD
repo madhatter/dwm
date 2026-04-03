@@ -13,6 +13,7 @@ makedepends=('git')
 install=dwm.install
 provides=('dwm')
 conflicts=('dwm')
+_srcname=dwm-$pkgver
 #epoch=1
 source=(dwm.desktop
         http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz)
@@ -29,12 +30,12 @@ md5sums=('939f403a71b6e85261d09fc3412269ee'
 source=(${source[@]} ${_patches[@]})
 
 #pkgver(){
-#  cd $srcdir/$pkgname-$pkgver
+#  cd $srcdir/$_srcname
 #  git describe --tags |sed 's/-/./g'
 #}
 #
 prepare() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$_srcname
 
   for p in "${_patches[@]}"; do
         echo "=> $p"
@@ -47,12 +48,12 @@ prepare() {
 }
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$_srcname
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$_srcname
   make PREFIX=/usr DESTDIR="$pkgdir" install
   install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -m644 -D README "$pkgdir/usr/share/doc/$pkgname/README"
