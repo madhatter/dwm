@@ -11,11 +11,24 @@ COPY *.diff /patches/
 
 WORKDIR /build/dwm-6.5
 
-CMD for p in /patches/dwm-alpha-20180613-b69c870.diff \
+CMD set -e; \
+    trap 'echo "=== FAILED ==="' ERR; \
+    echo "=== Checking patches (dry-run) ==="; \
+    for p in /patches/dwm-alpha-20180613-b69c870.diff \
              /patches/dwm-pertag.diff \
              /patches/dwm-bottomstack.diff \
              /patches/dwm-centered.diff; do \
       echo "=== $(basename $p) ==="; \
       patch --dry-run < "$p" 2>&1 | tail -5; \
       echo; \
-    done
+    done && \
+    echo "=== Applying patches ===" && \
+    for p in /patches/dwm-alpha-20180613-b69c870.diff \
+             /patches/dwm-pertag.diff \
+             /patches/dwm-bottomstack.diff \
+             /patches/dwm-centered.diff; do \
+      patch < "$p"; \
+    done && \
+    echo "=== Building ===" && \
+    make && \
+    echo "=== SUCCESS ==="
