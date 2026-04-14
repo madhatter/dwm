@@ -23,7 +23,7 @@ CMD set -e; \
       echo; \
     done && \
     echo "=== Applying patches ===" && \
-    for p in /patches/dwm-alpha-20180613-b69c870.diff \
+    for p in /patches/dwm-alpha-20230401-348f655.diff \
              /patches/dwm-pertag.diff \
              /patches/dwm-bottomstack.diff \
              /patches/dwm-centered.diff; do \
