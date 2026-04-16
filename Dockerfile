@@ -17,7 +17,8 @@ CMD set -e; \
     for p in /patches/dwm-alpha-20180613-b69c870.diff \
              /patches/dwm-pertag.diff \
              /patches/dwm-bottomstack.diff \
-             /patches/dwm-centered.diff; do \
+             /patches/dwm-centered.diff \
+             /patches/dwm-statuscolors.diff; do \
       echo "=== $(basename $p) ==="; \
       patch --dry-run < "$p" 2>&1 | tail -5; \
       echo; \
@@ -26,7 +27,8 @@ CMD set -e; \
     for p in /patches/dwm-alpha-20230401-348f655.diff \
              /patches/dwm-pertag.diff \
              /patches/dwm-bottomstack.diff \
-             /patches/dwm-centered.diff; do \
+             /patches/dwm-centered.diff \
+             /patches/dwm-statuscolors.diff; do \
       patch < "$p"; \
     done && \
     echo "=== Building ===" && \
