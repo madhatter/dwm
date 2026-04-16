@@ -2,7 +2,7 @@
 
 pkgname=dwm-custom
 pkgver=6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A custom version of the dynamic window manager for X"
 url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
@@ -20,13 +20,15 @@ source=(dwm.desktop
 _patches=(dwm-alpha-20230401-348f655.diff
           dwm-pertag.diff
           dwm-bottomstack.diff
-          dwm-centered.diff)
+          dwm-centered.diff
+          dwm-statuscolors.diff)
 md5sums=('939f403a71b6e85261d09fc3412269ee'
          '446e84f5b151a1d4483fd72fd647e47e'
          'd58169e88c4155db69964784b0bec7cf'
          '9f8c3a6ed9745856f05921837660df08'
          '77a365003af3b6a500cf05c573c88b04'
-         'f69050fc7ce0240237e6d831f83f405a')
+         'f69050fc7ce0240237e6d831f83f405a'
+         '3e9dac5651119983a650bac76aef4920')
 source=(${source[@]} ${_patches[@]})
 
 #pkgver(){
