@@ -8,7 +8,8 @@ A custom build of [dwm](https://dwm.suckless.org) for Arch Linux, managed as an 
 |---|---|
 | `pkgname` | `dwm-custom` |
 | `pkgver` | `6.5` |
-| **Patches** | alpha, pertag, bottomstack, centered |
+| **Patches** | alpha, pertag, bottomstack, centered, cfacts, vanitygaps |
+> Note: cfacts, bottomstack and vanitygaps are in one patch combined.
 
 ## Structure
 
