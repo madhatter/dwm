@@ -11,6 +11,11 @@ A custom build of [dwm](https://dwm.suckless.org) for Arch Linux, managed as an 
 | **Patches** | alpha, pertag, bottomstack, centered, cfacts, vanitygaps |
 > Note: cfacts, bottomstack and vanitygaps are in one patch combined.
 
+## Screenshot
+
+<p align="center"><img src="screenshot.png" width="700"><br>
+DWM running on my reliable T460s laptop.</p>
+
 ## Structure
 
 | File/Dir | Description |
