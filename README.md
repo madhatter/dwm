@@ -14,7 +14,7 @@ A custom build of [dwm](https://dwm.suckless.org) for Arch Linux, managed as an 
 ## Screenshot
 
 <p align="center"><img src="screenshot.png" width="700"><br>
-DWM running on my reliable T460s laptop.</p>
+dwm running on my reliable T460s laptop.</p>
 
 ## Structure
 
